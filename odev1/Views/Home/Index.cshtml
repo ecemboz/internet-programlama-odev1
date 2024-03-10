@@ -1,0 +1,63 @@
+﻿@using Newtonsoft.Json.Linq;
+@model List<object>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th  {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+            background-color: #f2f2f2;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>IRIS DATA</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>SEPAL LENGTH</th>
+                <th>SEPAL WIDTH</th>
+                <th>PETAL LENGTH</th>
+                <th>PETAL WIDTH</th>
+                <th>SPECIES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var data = JObject.Parse(item.ToString());
+                <tr>
+                    <td>@data["sepalLength"]</td>
+                    <td>@data["sepalWidth"]</td>
+                    <td>@data["petalLength"]</td>
+                    <td>@data["petalWidth"]</td>
+                    <td>@data["species"]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
